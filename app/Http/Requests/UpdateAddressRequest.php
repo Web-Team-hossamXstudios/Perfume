@@ -28,7 +28,7 @@ class UpdateAddressRequest extends FormRequest
             'buliding'=>[''],
             'appartment'=>[''],
             'floor'=>[''],
-            'street'=>['email'],
+            'street'=>[''],
             'additional_directions'=>[''],
         ];
     }
