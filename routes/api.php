@@ -26,3 +26,7 @@ Route::group([
     Route::post('/refresh', [AuthController::class, 'refresh']);
     Route::get('/user-profile', [AuthController::class, 'userProfile']);    
 });
+
+//Product
+Route::get('/products',[ProductController::class,'index']);
+Route::get('/product/{id}',[ProductController::class,'show']);
