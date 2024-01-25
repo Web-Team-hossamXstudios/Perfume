@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Client;
@@ -81,6 +82,7 @@ class AuthController extends Controller
      * @return \Illuminate\Http\JsonResponse
      */
     public function clientProfile() {
+        $user=User::all();
         return response()->json(auth()->user());
     }
     /**
