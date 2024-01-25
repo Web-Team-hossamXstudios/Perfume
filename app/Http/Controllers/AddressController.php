@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateAddressRequest;
 use App\Models\Address;
 use App\Models\Client;
 use Illuminate\Http\Request;
@@ -32,6 +33,11 @@ class AddressController extends Controller
         ]);
         return response()->json(["address"=> $address]);
 
+}
+public function update(UpdateAddressRequest $request, Address $address)
+{
+    $address_id=$request->user()->id;
+    $address->where('id', $address_id)->update($request->validated());
 
 
 
