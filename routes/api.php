@@ -30,3 +30,4 @@ Route::group([
 });
 
 Route::get('category',[CategoryController::class,'index']);
+Route::get('address',[AddressController::class,'store']);
