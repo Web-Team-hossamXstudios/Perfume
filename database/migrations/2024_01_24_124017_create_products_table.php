@@ -13,10 +13,10 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('supcategory_id')
+            $table->foreignId('category_id')
             ->nullable()
             ->references('id')
-            ->on('supcategories')
+            ->on('categories')
             ->onDelete('set null');
             $table->string('name');
             $table->string('description');

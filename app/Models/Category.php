@@ -2,15 +2,18 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Spatie\MediaLibrary\HasMedia;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\MediaLibrary\InteractsWithMedia;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
-class Category extends Model
+class Category extends Model implements HasMedia
 {
-    use HasFactory;
+    use HasFactory,InteractsWithMedia;
+    use HasFactory ;
     protected $guarded = [];
 
-    public function supcategory( ){ 
-        return $this->hasMany(Supcategory::class); 
+    public function products( ){ 
+        return $this->hasMany(Product::class); 
     }
 }
