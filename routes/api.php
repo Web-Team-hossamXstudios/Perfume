@@ -1,4 +1,6 @@
 <?php
+
+use App\Http\Controllers\AddressController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
@@ -24,9 +26,17 @@ Route::group([
     Route::post('/register', [AuthController::class, 'register']);
     Route::post('/logout', [AuthController::class, 'logout']);
     Route::post('/refresh', [AuthController::class, 'refresh']);
+<<<<<<< HEAD
     Route::get('/user-profile', [AuthController::class, 'userProfile']);    
 });
 
 //Product
 Route::get('/products',[ProductController::class,'index']);
 Route::get('/product/{id}',[ProductController::class,'show']);
+=======
+    Route::get('/user-profile', [AuthController::class, 'userProfile']);
+});
+
+Route::get('category',[CategoryController::class,'index']);
+Route::get('address',[AddressController::class,'store']);
+>>>>>>> origin/master
