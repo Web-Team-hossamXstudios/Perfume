@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AddressController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
@@ -38,5 +39,10 @@ Route::get('/product/{id}',[ProductController::class,'show']);
 });
 
 Route::get('category',[CategoryController::class,'index']);
+<<<<<<< HEAD
 Route::get('address',[AddressController::class,'store']);
 >>>>>>> origin/master
+=======
+Route::post('address',[AddressController::class,'store']);
+Route::post('address_update',[AddressController::class,'update']);
+>>>>>>> 3cf95a6a6209d6a2d4141bfbab989dffb54ac0ce
