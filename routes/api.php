@@ -1,10 +1,8 @@
 <?php
-
-use App\Http\Controllers\AddressController;
-use App\Http\Controllers\OrderController;
 use Illuminate\Http\Request;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
 
@@ -30,6 +28,7 @@ Route::group([
     Route::get('/user-profile', [AuthController::class, 'userProfile']);
 });
 
+<<<<<<< HEAD
 //               Catogory
 Route::get('category',[CategoryController::class,'index']);
 
@@ -37,3 +36,8 @@ Route::get('category',[CategoryController::class,'index']);
 Route::post('address',[AddressController::class,'store']);
 Route::post('address_update',[AddressController::class,'update']);
 Route::get('address_show',[AddressController::class,'index']);
+=======
+//Product
+Route::get('/products',[ProductController::class,'index']);
+Route::get('/product/{id}',[ProductController::class,'show']);
+>>>>>>> 0a995d579f13da049f694da6c379c47ee6d63421
