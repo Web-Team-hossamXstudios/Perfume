@@ -8,6 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class Promocode extends Model
 {
     use HasFactory;
+    protected $guarded = [];
+
     
     public function orders( ){ 
         return $this->hasMany(Order::class); 
