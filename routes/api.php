@@ -5,6 +5,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\CategoryController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\ProductController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,5 +30,3 @@ Route::group([
 });
 
 Route::get('category',[CategoryController::class,'index']);
-Route::post('address',[AddressController::class,'store']);
-
