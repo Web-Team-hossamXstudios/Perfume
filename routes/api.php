@@ -30,6 +30,10 @@ Route::group([
     Route::get('/user-profile', [AuthController::class, 'userProfile']);
 });
 
+//               Catogory
 Route::get('category',[CategoryController::class,'index']);
+
+//                 Address
 Route::post('address',[AddressController::class,'store']);
 Route::post('address_update',[AddressController::class,'update']);
+Route::get('address_show',[AddressController::class,'index']);

@@ -9,6 +9,11 @@ use Illuminate\Http\Request;
 
 class AddressController extends Controller
 {
+
+    public function index(){
+        $address= Address::all();
+        return response()->json($address);
+    }
     public function store(Request $request){
         $request->validate([
             "city"=>"required",
@@ -38,6 +43,10 @@ public function update(UpdateAddressRequest $request, Address $address)
 {
     $address_id=$request->user()->id;
     $address->where('id', $address_id)->update($request->validated());
+
+    return response()->json([
+        'message' => 'Updated successfully',
+    ], 200);
 
 
 
