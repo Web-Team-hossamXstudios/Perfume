@@ -1,5 +1,6 @@
 <?php
 namespace App\Http\Controllers;
+use App\Http\Requests\UpdateClientProfileRequest;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -84,6 +85,14 @@ class AuthController extends Controller
     public function clientProfile() {
         $user=User::all();
         return response()->json(auth()->user());
+    }
+    public function updateProfile(UpdateClientProfileRequest $request, Client $client) {
+        $client_id=$request->user()->id;
+        $client->where('id', $client_id)->update($request->validated());
+
+        return response()->json([
+            'message' => 'Updated successfully',
+        ], 200);
     }
     /**
      * Get the token array structure.
