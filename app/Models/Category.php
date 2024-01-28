@@ -10,10 +10,9 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 class Category extends Model implements HasMedia
 {
     use HasFactory,InteractsWithMedia;
-    use HasFactory ;
     protected $guarded = [];
 
-    public function products( ){ 
-        return $this->hasMany(Product::class); 
+    public function products( ){
+        return $this->hasMany(Product::class);
     }
 }
