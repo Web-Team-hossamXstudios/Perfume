@@ -9,24 +9,26 @@ class ReviewController extends Controller
 {
 
     //get reviews by id
-    public function show(){
-        $reviews = Review::where('client_id',auth()->user()->id->first());
+    public function index(){
+        $reviews = Review::where('client_id', auth('api')->user()->id);
         return response()->json
         (['reviews' => $reviews ]);
     }
-    
-    // add reviews
+
+    //store reviews by id
     public function store(Request $request){
         $request->validate([
-            'name' => 'required|string',
-            'comment' => 'required|string',
+            "rating"=>"required",
+            "comment"=>"required",
         ]);
-        $category = Review::create($date);
-        return response()->json([
-            'msg' => 'Sucsses'
-        ],
-        201
-    );
-    }
-
+        
+        Review::create([
+            "client_id" => auth('api')->user()->id,
+            "product_id"=> $request->product_id,
+            "rating"    => $request->rating,
+            "comment"   => $request->comment,
+        ]);
+        return response()->json
+        (['message' => 'Review created successfully']);
+    }   
 }

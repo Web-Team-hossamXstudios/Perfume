@@ -5,6 +5,7 @@ use App\Http\Controllers\AddressController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReviewController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,10 +29,10 @@ Route::group([
     Route::get('/user-profile', [AuthController::class, 'userProfile']);
 });
 
-//               Catogory
+//Catogory
 Route::get('category',[CategoryController::class,'index']);
 
-//                 Address
+//Address
 Route::post('address',[AddressController::class,'store']);
 Route::post('address_update',[AddressController::class,'update']);
 Route::get('address_show',[AddressController::class,'index']);
@@ -39,3 +40,7 @@ Route::get('address_show',[AddressController::class,'index']);
 //Product
 Route::get('/products',[ProductController::class,'index']);
 Route::get('/product/{id}',[ProductController::class,'show']);
+
+//Review
+Route::get('/reviews',[ReviewController::class,'index']);
+Route::post('/reviews',[ReviewController::class,'store']);
