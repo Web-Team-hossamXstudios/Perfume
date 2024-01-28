@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\CartController;
+use App\Http\Controllers\FavouriteController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\OrderItemController;
 use Illuminate\Http\Request;
@@ -33,34 +35,30 @@ Route::group([
     Route::post('/update-profile',[AuthController::class, 'updateProfile']);
 });
 
-<<<<<<< HEAD
-//Catogory
-Route::get('category',[CategoryController::class,'index']);
-
-//Address
-Route::post('address',[AddressController::class,'store']);
-Route::post('address_update',[AddressController::class,'update']);
-Route::get('address_show',[AddressController::class,'index']);
-=======
-//Category
-Route::get('/category',[CategoryController::class,'index']);
-
 //Address
 Route::post('/address',[AddressController::class,'store']);
 Route::post('/address_update',[AddressController::class,'update']);
 Route::get('/address/{id}',[AddressController::class,'index']);
->>>>>>> 1e9e878d8bc787aa5000e7463d21f3d3c723aa42
+
+//Category
+Route::get('/category',[CategoryController::class,'index']);
 
 //Product
 Route::get('/products',[ProductController::class,'index']);
 Route::get('/product/{id}',[ProductController::class,'show']);
 
-<<<<<<< HEAD
 //Review
 Route::get('/reviews',[ReviewController::class,'index']);
 Route::post('/reviews',[ReviewController::class,'store']);
-=======
+
+//Favourite
+Route::get('/favourites',[FavouriteController::class,'show']);
+Route::post('/favourites',[FavouriteController::class,'store']);
+
+//Cart
+Route::get('/carts',[CartController::class,'index']);
+Route::post('/carts',[CartController::class,'store']);
+
 //order
-Route::post('/order/{id}',[OrderController::class,'store']);
-//Route::post('/order/{id}/orderitem',[OrderItemController::class,'store']);
->>>>>>> 1e9e878d8bc787aa5000e7463d21f3d3c723aa42
+Route::post('/order',[OrderController::class,'store']);
+
