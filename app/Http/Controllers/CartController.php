@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 class CartController extends Controller
 {
     //get all carts
-    public function show()
+    public function index()
     {
         // Retrieve the carts 
         $carts = Cart::where('client_id', auth('api')->user()->id);
