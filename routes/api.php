@@ -52,7 +52,7 @@ Route::get('/reviews/{id}',[ReviewController::class,'index']);
 Route::post('/reviews',[ReviewController::class,'store']);
 
 //favourite
-Route::get('/favourites/{id}',[FavouriteController::class,'index']);
+Route::get('/favourites',[FavouriteController::class,'index']);
 Route::post('/favourites',[FavouriteController::class,'store']);
 
 //Cart
