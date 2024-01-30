@@ -2,22 +2,23 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\ReviewResource\Pages;
-use App\Filament\Resources\ReviewResource\RelationManagers;
-use App\Models\Category;
-use App\Models\Client;
-use App\Models\Product;
-use App\Models\Review;
 use Filament\Forms;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
-use Filament\Resources\Form;
-use Filament\Resources\Resource;
-use Filament\Resources\Table;
 use Filament\Tables;
+use App\Models\Client;
+use App\Models\Review;
+use App\Models\Product;
+use App\Models\Category;
+use Filament\Resources\Form;
+use Filament\Resources\Table;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Radio;
+use Filament\Forms\Components\Select;
 use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\ReviewResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\ReviewResource\RelationManagers;
 
 class ReviewResource extends Resource
 {
@@ -38,7 +39,17 @@ class ReviewResource extends Resource
                     ->options(Product::all()->pluck('name', 'id'))
                     ->searchable(),
                 TextInput::make('comment')->required(),
-                TextInput::make('rating')->required(),
+                Radio::make('rating')
+                ->label('rating')
+                ->options([
+                    '1' => '1',
+                    '2' => '2',
+                    '3' => '3',
+                    '4' => '4',
+                    '5' => '5',
+                ])
+                ->inline()
+                ->inlineLabel(false),
 
             ]);
     }
@@ -53,6 +64,7 @@ class ReviewResource extends Resource
                     ->label('Product'),
                 TextColumn::make('comment')->searchable(),
                 TextColumn::make('rating')->searchable(),
+                
 
             ])
             ->filters([

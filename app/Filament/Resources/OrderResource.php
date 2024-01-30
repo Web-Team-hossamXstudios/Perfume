@@ -2,20 +2,21 @@
 
 namespace App\Filament\Resources;
 
-use App\Filament\Resources\OrderResource\Pages;
-use App\Filament\Resources\OrderResource\RelationManagers;
-use App\Models\Client;
-use App\Models\Order;
-use App\Models\Promocode;
 use Filament\Forms;
-use Filament\Forms\Components\Select;
-use Filament\Forms\Components\TextInput;
-use Filament\Resources\Form;
-use Filament\Resources\Resource;
-use Filament\Resources\Table;
 use Filament\Tables;
+use App\Models\Order;
+use App\Models\Client;
+use App\Models\Promocode;
+use Filament\Resources\Form;
+use Filament\Resources\Table;
+use Filament\Resources\Resource;
+use Filament\Forms\Components\Select;
+use Filament\Tables\Columns\TextColumn;
+use Filament\Forms\Components\TextInput;
 use Illuminate\Database\Eloquent\Builder;
+use App\Filament\Resources\OrderResource\Pages;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
+use App\Filament\Resources\OrderResource\RelationManagers;
 
 class OrderResource extends Resource
 {
@@ -33,10 +34,11 @@ class OrderResource extends Resource
                     ->searchable(),
                 Select::make('promocode_id')
                     ->label('Promocode')
-                    ->options(Promocode::all()->pluck('code', 'id'))
+                    ->options(Promocode::all()->pluck('value', 'id'))
                     ->searchable(),
-                TextInput::make('Total')->required()->numeric(),
-
+                TextInput::make('value')->required()->numeric(),
+                TextInput::make('quantity')->required()->numeric(),
+                TextInput::make('status')->required(),
 
             ]);
     }
@@ -45,7 +47,11 @@ class OrderResource extends Resource
     {
         return $table
             ->columns([
-                //
+                TextColumn::make('client.name')->searchable(),
+                TextColumn::make('status')->searchable(),
+                TextColumn::make('total_price')->searchable(),
+
+
             ])
             ->filters([
                 //
