@@ -61,3 +61,4 @@ Route::post('/carts',[CartController::class,'store']);
 
 //order
 Route::post('/order',[OrderController::class,'store']);
+
